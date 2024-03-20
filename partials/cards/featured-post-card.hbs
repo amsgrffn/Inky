@@ -1,0 +1,43 @@
+<article class="{{post_class}} h-entry">
+    <p class="p-hash-tag"><a href="/#/portal/signup">Fiction</a></p>
+    {{#if feature_image}}
+        <picture>
+            <source srcset="
+            {{img_url feature_image size="s" format="avif"}} 280w,
+            {{img_url feature_image size="m" format="avif"}} 480w,
+            {{img_url feature_image size="l" format="avif"}} 1200w,
+            {{img_url feature_image size="xl" format="avif"}} 2000w" sizes="(min-width: 1200px) 480px, 100vw" type="image/avif">
+                <source srcset="
+            {{img_url feature_image size="s" format="webp"}} 280w,
+            {{img_url feature_image size="m" format="webp"}} 480w,
+            {{img_url feature_image size="l" format="webp"}} 1200w,
+            {{img_url feature_image size="xl" format="webp"}} 2000w" sizes="(min-width: 1200px) 480px, 100vw" type="image/webp">
+                <img srcset="
+            {{img_url feature_image size="s"}} 280w,
+            {{img_url feature_image size="m"}} 480w,
+            {{img_url feature_image size="l"}} 1200w,
+            {{img_url feature_image size="xl"}} 2000w" sizes="(min-width: 1200px) 480px, 100vw" src="{{img_url feature_image size="m"}}" alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" loading="lazy" width="480" height="480">
+        </picture>
+    {{/if}}
+    <div class="post-deets">
+        <header>
+            <h2 class="p-name"><a class="u-url" href="{{url}}">{{title}}</a></h2>
+        </header>
+        <footer>
+            {{#primary_author}}
+                <a class="avatar" href="{{url}}"><img src="{{img_url profile_image}}" alt="{{name}}'s' Avatar" width="38" height="38" loading="lazy"></a>
+            {{/primary_author}}
+            <div>
+                <p>
+                    {{#foreach authors}}<a class="p-author h-card" href="{{url}}" title="{{name}}" rel="author">{{name}}</a>{{/foreach}}
+                </p>
+                <p>
+                    <time class="dt-published" datetime="{{date format="YYYY-MM-DD"}}"><a href="{{url}}">{{date published_at format="D MMMM YYYY"}}</a></time>
+                </p>
+                <p class="p-category">
+                    {{#primary_tag}}<a class="primary-tag" rel="tag" href="{{url}}">{{name}}</a>{{/primary_tag}} &bull; {{tags from="2" limit="2" separator=" &bull; "}}
+                </p>
+            </div>
+        </footer>
+    </div>
+</article>

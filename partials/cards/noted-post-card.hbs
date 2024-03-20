@@ -1,0 +1,21 @@
+<article class="{{post_class}} h-entry">
+    <header>
+        <h2 class="p-name"><a class="u-url" href="{{url}}"><span>{{title}}</span></a></h2>
+    </header>
+    <div class="e-content">
+        {{content}}
+    </div>
+    <footer class="flex flex-wrap mt-12 items-center">
+        {{^is 'author'}}
+        <div class="mr-4">
+        {{#primary_author}}
+             <a class="avatar" href="{{url}}"><img class="hover:scale-125" src="{{img_url profile_image}}" alt="{{name}}'s Avatar" width="40" height="40" loading="lazy"></a>
+         {{/primary_author}}
+        </div>
+        {{/is}}
+        <div>
+            <p><time class="dt-published" datetime="{{date format="YYYY-MM-DD"}}"><a class="font-bold" href="{{url}}">{{date published_at format="DD MMM YYYY, h:mm a"}}</a></time></p>
+            <p>{{#primary_tag}}<a class="primary-tag" rel="tag" href="{{url}}">{{name}}</a>{{/primary_tag}} &bull; {{tags from="2" limit="2" separator=" &bull; "}}</p>
+        </div>
+    </footer>
+</article>

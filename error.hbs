@@ -1,0 +1,24 @@
+{{!< default}}
+<div class="error-page">
+    <nav class="topnav flex items-center justify-between">
+        <ul>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline -mt-1" fill="#000000" viewBox="0 0 256 256"><path d="M128,24a80,80,0,0,0-80,80c0,72,80,128,80,128s80-56,80-128A80,80,0,0,0,128,24Zm0,112a32,32,0,1,1,32-32A32,32,0,0,1,128,136Z" opacity="0.2"></path><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"></path></svg> <a href="{{@site.url}}">Home</a><svg xmlns="http://www.w3.org/2000/svg" class="inline" width="14" height="14" fill="#000000" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>Error Page
+        </ul>
+        <div>
+            <ul>
+                <li><a href="/about">About</a></li>
+                <li><a href="/about">Contact</a></li>
+                <li><a class="sub-link" data-portal="signup" href="/about">Subscription Options</a> 👍</li>
+                <li><a href="/about">Login</a> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline -mt-1" fill="#000000" viewBox="0 0 256 256"><path d="M136,128,96,168V88Z" opacity="0.2"></path><path d="M141.66,122.34l-40-40A8,8,0,0,0,88,88v32H24a8,8,0,0,0,0,16H88v32a8,8,0,0,0,13.66,5.66l40-40A8,8,0,0,0,141.66,122.34ZM104,148.69V107.31L124.69,128ZM208,48V208a16,16,0,0,1-16,16H136a8,8,0,0,1,0-16h56V48H136a8,8,0,0,1,0-16h56A16,16,0,0,1,208,48Z"></path></svg></li>
+            </ul>
+        </div>
+    </nav>
+    <main class="masthead">
+        <h2>{{statusCode}} Error 😢</h2>
+        <div class="kg-width-wide">
+            <img class="block shadow-lg mb-16" src="{{asset 'img/404.gif'}}" height="880" width="600" alt="Charles Bronson Gif">
+        </div>
+        <p>Bummer, the URL you requested does not currently exist on this site.</p>
+        <p class="oops"><span>{{url}}</span> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="inline -mt-.5" fill="#000000" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path></svg>not a thing here</p>
+    </main>
+</div>

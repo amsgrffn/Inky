@@ -1,0 +1,192 @@
+{{!< default}}
+{{> "topnav"}}
+<main class="page-or-post">
+    {{#post}}
+    <article class="{{post_class}}">
+        <header>
+            <p class="tag">{{#primary_tag}}filed under <a class="primary-tag" rel="tag" href="{{url}}">{{name}}</a>{{/primary_tag}}</p>
+            <h2 class="gh-title">{{title}}</h2>
+            <div class="f-img">
+                {{#if feature_image}}
+                 <picture>
+                     <source
+                         srcset="{{img_url feature_image size="s" format="avif"}} 300w,
+                                 {{img_url feature_image size="m" format="avif"}} 530w,
+                                 {{img_url feature_image size="l" format="avif"}} 1000w,
+                                 {{img_url feature_image size="xl" format="avif"}} 2000w"
+                         sizes="(max-width: 1300px) 1300px, 92vw"
+                         type="image/avif"
+                     >
+                     <source
+                         srcset="{{img_url feature_image size="s" format="webp"}} 300w,
+                                 {{img_url feature_image size="m" format="webp"}} 530w,
+                                 {{img_url feature_image size="l" format="webp"}} 1000w,
+                                 {{img_url feature_image size="xl" format="webp"}} 2000w"
+                         sizes="(max-width: 1300px) 1300px, 92vw"
+                         type="image/webp"
+                     >
+                     <img
+                         srcset="{{img_url feature_image size="s"}} 300w,
+                                 {{img_url feature_image size="m"}} 530w,
+                                 {{img_url feature_image size="l"}} 1000w,
+                                 {{img_url feature_image size="xl"}} 2000w"
+                         sizes="(max-width: 1300px) 1300px, 92vw"
+                         src="{{img_url feature_image size="l"}}"
+                         alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                     >
+                 </picture>
+                {{/if}}
+            </div>
+            {{#if custom_excerpt}}
+                <p class="excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+           <!-- <div class="byline flex items-center gap-x-4 mb-20">
+                {{#primary_author}}
+                    <a href="{{url}}">
+                        <img class="rounded-full shadow-lg" src="{{img_url profile_image}}" alt="{{name}}'s Avatar" width="60" height="60" loading="lazy">
+                    </a>
+                {{/primary_author}}
+                <div>
+                    <p>
+                        {{#foreach authors}}
+                            <a class="p-author h-card" href="{{url}}" title="{{name}}" rel="author">{{name}}</a>
+                        {{/foreach}}
+                    </p>
+                    <p class="pubdate">
+                        <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMMM YYYY"}}</time>
+                    </p>
+                </div>
+            </div>-->
+        </header>
+        <div class="e-content">
+            {{content}}
+        </div>
+        <footer class="border-t border-neutral-300 mt-16 pt-4">
+            <p>
+                {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}} wrote <em>{{title}}</em> on {{date format="D MMMM YYYY"}} and filed it under {{tags separator=", "}}
+            </p>
+        </footer>
+        <div class="share-btn flex gap-x-8">
+          <button id="share-button" class="share-or-talk" onclick="toggleShareDropdown()">
+            <span>Share this article</span> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="inline -mt-2" fill="#000000" viewBox="0 0 256 256"><path d="M152,192V144c-61.4,0-104.61,37.19-121.07,54.72a4,4,0,0,1-6.9-3.18C31.51,130.45,99.19,80,152,80V32l80,80Z" opacity="0.2"></path><path d="M237.66,106.35l-80-80A8,8,0,0,0,144,32V72.35c-25.94,2.22-54.59,14.92-78.16,34.91-28.38,24.08-46.05,55.11-49.76,87.37a12,12,0,0,0,20.68,9.58h0c11-11.71,50.14-48.74,107.24-52V192a8,8,0,0,0,13.66,5.65l80-80A8,8,0,0,0,237.66,106.35ZM160,172.69V144a8,8,0,0,0-8-8c-28.08,0-55.43,7.33-81.29,21.8a196.17,196.17,0,0,0-36.57,26.52c5.8-23.84,20.42-46.51,42.05-64.86C99.41,99.77,127.75,88,152,88a8,8,0,0,0,8-8V51.32L220.69,112Z"></path></svg>
+          </button>
+        <div class="share-icons" id="share-icons">
+          <button onclick="shareViaEmail()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#000000" viewBox="0 0 256 256"><path d="M224,56l-96,88L32,56Z" opacity="0.2"></path><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48Zm-96,85.15L52.57,64H203.43ZM98.71,128,40,181.81V74.19Zm11.84,10.85,12,11.05a8,8,0,0,0,10.82,0l12-11.05,58,53.15H52.57ZM157.29,128,216,74.18V181.82Z"></path></svg></button>
+          <button onclick="shareOnFacebook()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0165E1" viewBox="0 0 256 256"><path d="M224,128a96,96,0,1,1-96-96A96,96,0,0,1,224,128Z" opacity="0.2"></path><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path></svg></button>
+          <button onclick="shareOnTwitter()"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#000000" class="bi bi-twitter-x" viewBox="0 0 16 16">
+          <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+        </svg></button>
+          <button onclick="shareOnPinterest()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#E60023" viewBox="0 0 256 256"><path d="M208,112c0,44.18-32,72-64,72s-41.63-21.07-41.63-21.07h0L120,88l13.14-55.83h0A80,80,0,0,1,208,112Z" opacity="0.2"></path><path d="M216,112c0,22.57-7.9,43.2-22.23,58.11C180.39,184,162.25,192,144,192c-17.88,0-29.82-5.86-37.43-12L95.79,225.83A8,8,0,0,1,88,232a8.24,8.24,0,0,1-1.84-.21,8,8,0,0,1-6-9.62l32-136a8,8,0,0,1,15.58,3.66l-16.9,71.8C114,166,123.3,176,144,176c27.53,0,56-23.94,56-64A72,72,0,1,0,65.63,148a8,8,0,0,1-13.85,8A88,88,0,1,1,216,112Z"></path></svg></button>
+          <button onclick="shareOnLinkedIn()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#0077b5" viewBox="0 0 256 256"><path d="M224,40V216a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8H216A8,8,0,0,1,224,40Z" opacity="0.2"></path><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"></path></svg></button>
+          <button onclick="shareOnTelegram()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#229ED9" viewBox="0 0 256 256"><path d="M88,200V134.87l44.37,38.91-30.61,31.76A8,8,0,0,1,88,200ZM230.63,32.07,28,111.38A6.23,6.23,0,0,0,29,123.3l59,11.57L232,33.22A1,1,0,0,0,230.63,32.07Z" opacity="0.2"></path><path d="M236.88,26.19a9,9,0,0,0-9.16-1.57L25.06,103.93a14.22,14.22,0,0,0,2.43,27.21L80,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L173,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L239.77,35A9,9,0,0,0,236.88,26.19Zm-61.14,36L86.15,126.35l-49.61-9.73ZM96,200V152.52l24.79,21.74Zm87.53,8L100.85,135.5l119-85.29Z"></path></svg></button>
+          <button onclick="shareOnWhatsApp()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#25D366" viewBox="0 0 256 256"><path d="M128,32A96,96,0,0,0,44.89,176.07L32.42,213.46a8,8,0,0,0,10.12,10.12l37.39-12.47A96,96,0,1,0,128,32Zm24,152a80,80,0,0,1-80-80,32,32,0,0,1,32-32l16,32-12.32,18.47a48.19,48.19,0,0,0,25.85,25.85L152,136l32,16A32,32,0,0,1,152,184Z" opacity="0.2"></path><path d="M187.58,144.84l-32-16a8,8,0,0,0-8,.5l-14.69,9.8a40.55,40.55,0,0,1-16-16l9.8-14.69a8,8,0,0,0,.5-8l-16-32A8,8,0,0,0,104,64a40,40,0,0,0-40,40,88.1,88.1,0,0,0,88,88,40,40,0,0,0,40-40A8,8,0,0,0,187.58,144.84ZM152,176a72.08,72.08,0,0,1-72-72A24,24,0,0,1,99.29,80.46l11.48,23L101,118a8,8,0,0,0-.73,7.51,56.47,56.47,0,0,0,30.15,30.15A8,8,0,0,0,138,155l14.62-9.74,23,11.48A24,24,0,0,1,152,176ZM128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-6.54-.67L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Z"></path></svg></button>
+          <button onclick="shareOnReddit()"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#FF4500" viewBox="0 0 256 256"><path d="M228.21,124.67h0A51.6,51.6,0,0,1,232,144c0,39.76-46.56,72-104,72S24,183.76,24,144a51.6,51.6,0,0,1,3.79-19.33h0A24,24,0,1,1,59.41,89.88h0C77.72,78.75,101.72,72,128,72s50.28,6.75,68.59,17.88h0a24,24,0,1,1,31.62,34.79Z" opacity="0.2"></path><path d="M248,104a32,32,0,0,0-52.94-24.19c-16.75-8.9-36.76-14.28-57.66-15.53l5.19-31.17,17.72,2.72a24,24,0,1,0,2.87-15.74l-26-4a8,8,0,0,0-9.11,6.59L121.2,64.16c-21.84.94-42.82,6.38-60.26,15.65a32,32,0,0,0-42.59,47.74A59,59,0,0,0,16,144c0,21.93,12,42.35,33.91,57.49C70.88,216,98.61,224,128,224s57.12-8,78.09-22.51C228,186.35,240,165.93,240,144a59,59,0,0,0-2.35-16.45A32.16,32.16,0,0,0,248,104ZM184,24a8,8,0,1,1-8,8A8,8,0,0,1,184,24Zm40.13,93.78a8,8,0,0,0-3.29,10A43.62,43.62,0,0,1,224,144c0,16.53-9.59,32.27-27,44.33C178.67,201,154.17,208,128,208s-50.67-7-69-19.67C41.59,176.27,32,160.53,32,144a43.75,43.75,0,0,1,3.14-16.17,8,8,0,0,0-3.27-10A16,16,0,1,1,52.94,94.59a8,8,0,0,0,10.63,2.12l.18-.11C81.45,85.9,104.25,80,128,80h0c23.73,0,46.53,5.9,64.23,16.6l.18.11a8,8,0,0,0,10.63-2.12,16,16,0,1,1,21.07,23.19ZM88,144a16,16,0,1,1,16-16A16,16,0,0,1,88,144Zm96-16a16,16,0,1,1-16-16A16,16,0,0,1,184,128Zm-16.93,44.25a8,8,0,0,1-3.32,10.82,76.18,76.18,0,0,1-71.5,0,8,8,0,1,1,7.5-14.14,60.18,60.18,0,0,0,56.5,0A8,8,0,0,1,167.07,172.25Z"></path></svg></button>
+        </div>
+        </div>
+        <button id="showCommentsBtn" class="share-or-talk"><span>You talkin' to me?</span> <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" class="inline -mt-3" fill="#000000" viewBox="0 0 256 256"><path d="M224,128A96,96,0,0,1,79.93,211.11h0L42.54,223.58a8,8,0,0,1-10.12-10.12l12.47-37.39h0A96,96,0,1,1,224,128Z" opacity="0.2"></path><path d="M128,24A104,104,0,0,0,36.18,176.88L24.83,210.93a16,16,0,0,0,20.24,20.24l34.05-11.35A104,104,0,1,0,128,24Zm0,192a87.87,87.87,0,0,1-44.06-11.81,8,8,0,0,0-4-1.08,7.85,7.85,0,0,0-2.53.42L40,216,52.47,178.6a8,8,0,0,0-.66-6.54A88,88,0,1,1,128,216Zm12-88a12,12,0,1,1-12-12A12,12,0,0,1,140,128Zm-44,0a12,12,0,1,1-12-12A12,12,0,0,1,96,128Zm88,0a12,12,0,1,1-12-12A12,12,0,0,1,184,128Z"></path></svg></button>
+        <div id="commentBlock" style="display:none;">
+            {{#if comments}}
+                <div class="gh-post-comments mt-20">
+                    {{comments title="" mode="light"}}
+                </div>
+            {{/if}}
+        </div>
+    </article>
+    <div class="readmore mt-32">
+        <section class="mb-32">
+            <h4><span>Possibly Related to This Article</span></h4>
+            <div class="flex flex-wrap gap-8">
+                {{#get "posts" include="tags,authors" filter="id:-{{id}}+tags:[{{tags[*].slug}}]" limit="4" as |more_posts|}}
+                {{#foreach more_posts}}
+                    {{> "readmore-card"}}
+                {{/foreach}}
+                {{/get}}
+            </div>
+        </section>
+        <section class="mb-32">
+            <h4><span>More by {{#primary_author}}{{name}}{{/primary_author}}</span></h4>
+            <div class="flex flex-wrap gap-8">
+                    {{#get "posts" include="tags,authors" limit="4" filter="id:-{{id}}+author:{{primary_author.slug}}+tag:-[hash-noted]" as |related|}}
+                    {{#foreach related}}
+                        {{> "readmore-card"}}
+                    {{/foreach}}
+                    {{/get}}
+            </div>
+        </section>
+        <section>
+            <h4><span>Our Latest Articles</span></h4>
+            <div class="flex flex-wrap gap-8">
+                    {{#get "posts" include="tags,authors" filter="id:-{{id}}" limit="4" as |more_posts|}}
+                            {{#foreach more_posts}}
+                                {{> "readmore-card"}}
+                            {{/foreach}}
+                    {{/get}}
+            </div>
+        </section>
+    </div>
+    {{/post}}
+</main>
+<script>
+function toggleShareDropdown() {
+  var shareIcons = document.getElementById('share-icons');
+  shareIcons.classList.toggle('show');
+}
+function shareOnFacebook() {
+  var sharedURL = location.href;
+  var facebookShareURL = 'https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(sharedURL);
+  window.open(facebookShareURL, '_blank');
+}
+function shareOnTwitter() {
+  var sharedURL = location.href;
+  var twitterShareURL = 'https://twitter.com/intent/tweet?url=' + encodeURIComponent(sharedURL);
+  window.open(twitterShareURL, '_blank');
+}
+function shareOnPinterest() {
+  var sharedURL = location.href;
+  var pinterestShareURL = 'https://www.pinterest.com/pin/create/button/?url=' + encodeURIComponent(sharedURL);
+  window.open(pinterestShareURL, '_blank');
+}
+function shareOnLinkedIn() {
+  var sharedURL = location.href;
+  var linkedInShareURL = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(sharedURL);
+  window.open(linkedInShareURL, '_blank');
+}
+function shareOnFlipboard() {
+  var sharedURL = location.href;
+  var flipboardShareURL = 'https://share.flipboard.com/bookmarklet/popout?v=2&title=&url=' + encodeURIComponent(sharedURL);
+  window.open(flipboardShareURL, '_blank');
+}
+function shareOnTelegram() {
+  var sharedURL = location.href;
+  var telegramShareURL = 'https://telegram.me/share/url?url=' + encodeURIComponent(sharedURL);
+  window.open(telegramShareURL, '_blank');
+}
+function shareOnWhatsApp() {
+  var sharedURL = location.href;
+  var whatsAppShareURL = 'whatsapp://send?text=' + encodeURIComponent(sharedURL);
+  window.open(whatsAppShareURL, '_blank');
+}
+function shareOnReddit() {
+  var sharedURL = location.href;
+  var redditShareURL = 'https://www.reddit.com/submit?url=' + encodeURIComponent(sharedURL);
+  window.open(redditShareURL, '_blank');
+}
+function shareViaEmail() {
+  var sharedURL = location.href;
+  var emailSubject = 'Check out this link';
+  var emailBody = 'I found this interesting link and thought you might like it: ' + sharedURL;
+  var mailToLink = 'mailto:?subject=' + encodeURIComponent(emailSubject) + '&body=' + encodeURIComponent(emailBody);
+  window.location.href = mailToLink;
+}
+function shareNative() {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    // Mobile device, trigger native sharing
+    var sharedURL = location.href;
+    navigator.share({ url: sharedURL })
+      .then(() => console.log('Shared successfully.'))
+      .catch((error) => console.log('Error sharing:', error));
+  } else {
+    console.log('Native sharing not supported on this device.');
+  }
+}
+</script>

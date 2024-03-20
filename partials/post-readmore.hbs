@@ -1,0 +1,32 @@
+<div class="readmore mt-32">
+    <section class="mb-24">
+        <h4><span>Possibly Related to This Article</span></h4>
+        <div class="flex flex-wrap justify-between gap-6">
+            {{#get "posts" include="tags,authors" filter="id:-{{id}}+tags:[{{tags[*].slug}}]" limit="4" as |more_posts|}}
+            {{#foreach more_posts}}
+                {{> "readmore-card"}}
+            {{/foreach}}
+            {{/get}}
+        </div>
+    </section>
+    <section class="mb-24">
+        <h4><span>More from {{#primary_author}}{{name}}{{/primary_author}}</span></h4>
+        <div class="flex flex-wrap justify-between gap-6">
+                {{#get "posts" include="tags,authors" limit="4" filter="id:-{{id}}+author:{{primary_author.slug}}+tag:-[hash-noted]" as |related|}}
+                {{#foreach related}}
+                    {{> "readmore-card"}}
+                {{/foreach}}
+                {{/get}}
+        </div>
+    </section>
+    <section>
+        <h4><span>Our Latest Articles</span></h4>
+        <div class="flex flex-wrap justify-between gap-6">
+                {{#get "posts" include="tags,authors" filter="id:-{{id}}" limit="4" as |more_posts|}}
+                        {{#foreach more_posts}}
+                            {{> "readmore-card"}}
+                        {{/foreach}}
+                {{/get}}
+        </div>
+    </section>
+</div>

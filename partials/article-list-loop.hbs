@@ -1,0 +1,49 @@
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FOR POSTS WITH #NOTED INTERNAL TAG
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{#has tag="#noted"}}
+    {{> "cards/noted-post-card" page=../pagination.page }} {{!-- partials/cards/noted-post-card --}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FOR POSTS WITH #QIK INTERNAL TAG
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{else has tag="#qik"}}
+    {{> "cards/qik-post-card" page=../pagination.page }} {{!-- partials/cards/qik-post-card --}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FOR POSTS WITH #QUOTE INTERNAL TAG
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{else has tag="#quote"}}
+    {{> "cards/quote-post-card" page=../pagination.page }} {{!-- partials/cards/quote-post-card --}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FOR POSTS WITH #VIDEO INTERNAL TAG
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{else has tag="#video"}}
+    {{> "cards/video-post-card" page=../pagination.page }} {{!-- partials/cards/video-post-card --}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FOR POSTS WITH #IMAGE INTERNAL TAG
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{else has tag="#image"}}
+    {{> "cards/image-post-card" page=../pagination.page }} {{!-- partials/cards/image-post-card --}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+FOR POSTS WITH #FEATURED INTERNAL TAG
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{else has tag="#featured"}}
+    {{> "cards/featured-post-card" page=../pagination.page }} {{!-- partials/cards/featured-post-card --}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+AND FOR THE LEFTOVERS
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+{{else}}
+{{> "cards/article-post-card" page=../pagination.page }} {{!-- partials/cards/article-post-card --}}
+{{/has}}

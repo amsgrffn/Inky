@@ -1,0 +1,44 @@
+<main class="article-list gh-postfeed">
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+DISPLAY ON HOME PAGE
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+    {{#is 'home'}}
+        <h4 class="header-with-arrow"><span>Recently Published Blog Posts</span> <img class="mt-8 ml-2 inline" src="{{asset 'img/arrow.svg'}}" width="68" height="68" alt="Arrow"></h4>
+    {{/is}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+DISPLAY ON TAG PAGES
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+    {{#is 'tag'}}
+        {{#tag}}
+            <h4 class="header-with-arrow"><span>Posts filed under <strong>{{name}}</strong></span> <img class="mt-8 ml-2 inline" src="{{asset 'img/arrow.svg'}}" width="68" height="68" alt="Arrow"></h4>
+        {{/tag}}
+    {{/is}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+LOOP THROUGH FIRST 20 ARTICLES
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+    {{#foreach posts}}
+        {{> "article-list-loop"}}
+    {{/foreach}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+INSERT NEWSLETTER CTA AFTER 20TH POST
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+        {{> "cta-card"}}
+
+{{!XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+LOOP THROUGH THE NEXT 20 ARTICLES
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX}}
+
+    {{#foreach posts from="16" to="30"}}
+        {{> "article-list-loop"}}
+    {{/foreach}}
+
+</main>
+
+   {{pagination}}

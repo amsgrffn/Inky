@@ -1,0 +1,18 @@
+<article class="{{post_class}} h-entry">
+    <header>
+        <h2 class="p-name"><a class="u-url" href="{{url}}">{{date published_at format="DD MMM YYYY, h:mm a"}}</a> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline -mt-1" fill="#000000" viewBox="0 0 256 256"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path></svg></h2>
+    </header>
+    <div class="e-content">
+        {{content}}
+    </div>
+    <footer class="flex flex-wrap mt-12 items-center">
+            <div class="mr-4">
+            {{#primary_author}}
+                 <a class="avatar" href="{{url}}"><img class="hover:scale-125" src="{{img_url profile_image}}" alt="{{name}}'s Avatar" width="35" height="35" loading="lazy"></a>
+             {{/primary_author}}
+            </div>
+            <div>
+                <p>{{#primary_tag}}<a class="primary-tag" rel="tag" href="{{url}}">{{name}}</a>{{/primary_tag}} &bull; {{tags from="2" limit="1" separator=" &bull; "}}</p>
+            </div>
+    </footer>
+</article>
