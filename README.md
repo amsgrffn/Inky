@@ -1,4 +1,4 @@
-# Ghost Starter Theme
+# Inky Ghost Theme
 
 A starter framework for Ghost themes! Click **Use this template** to create a copy of this repo for everything you need to get started developing a custom Ghost theme.
 
@@ -17,7 +17,7 @@ We've documented this starter theme pretty heavily so that it should be possible
 
 &nbsp;
 
-## Starter theme features
+## Inky/Starter theme features
 
 🔁&nbsp;Livereload by default. See changes instantly in the browser whenever you save a file.
 
@@ -58,7 +58,7 @@ One neat trick is that you can also create custom one-off templates just by addi
 
 ## Development guide
 
-The Starter theme provides a first-class development experience out of the box. 
+The Inky/Starter theme provides a first-class development experience out of the box. 
 
 &nbsp;
 
